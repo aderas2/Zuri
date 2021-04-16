@@ -84,11 +84,28 @@ def bankOperation(user):
       print('Invalid option selected')
       bankOperation(user)
 
+Amount = 100
+
+
 def withdrawalOperation():
-  print('Withdrawal')
+  
+  print("Welcome to withdrawal service")
+  print('How much would you like to withdraw')
+  WithdrawALAmount = int(input('Please input amount \n'))
+  if WithdrawALAmount<=Amount:
+    print('Take your cash')
+    print ("Your account balance is: $ ", Amount - WithdrawALAmount)
+  else:
+    print("Insufficient Fund, TRY AGAIN!!!")
+    withdrawalOperation()
+  
 
 def depositOperation():
-  print('Deposit')
+  print('How much do you like to deposit')
+  
+  amountDeposited = int(input('Please input amount \n'))
+  print('Your current balance is $', amountDeposited)
+  print('Thank you for banking with us')
 
 def logout():
   login()
