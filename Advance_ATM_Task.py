@@ -50,8 +50,8 @@ def register():
   password = input('please create a password. \n')
 
   accountNumber = generateAccountNumber()
-  
-  database[accountNumber] = [first_name,last_name,email,password,100]
+
+  database[accountNumber] = [first_name,last_name,email,password]
 
   print('Your account has been created')
   print('==== ======= ====== ======= =====')
@@ -84,7 +84,7 @@ def bankOperation(user):
       print('Invalid option selected')
       bankOperation(user)
 
-
+Amount = 100
 
 
 def withdrawalOperation():
@@ -92,26 +92,36 @@ def withdrawalOperation():
   print("Welcome to withdrawal service")
   print('How much would you like to withdraw')
   WithdrawALAmount = int(input('Please input amount \n'))
-  if WithdrawALAmount<=accountBalance:
+  if WithdrawALAmount<=Amount:
     print('Take your cash')
-    print ("Your account balance is: $ ", accountBalance - WithdrawALAmount)
+    print ("Your account balance is: $ ", Amount - WithdrawALAmount)
   else:
     print("Insufficient Fund, TRY AGAIN!!!")
     withdrawalOperation()
+
+  print('\n')
+  print('Do you want to perform another operation')
+  OtherOption = int(input('1 for YES, 2 for NO \n'))
+  if OtherOption == 1:
+    bankOperation()
+  else:
+    login()
   
 
 def depositOperation():
   print('How much do you like to deposit')
   
   amountDeposited = int(input('Please input amount \n'))
-  print('You have successfully deposited $%s:' % amountDeposited)
-  print('Your current balance is $', amountDeposited + accountBalance)
+  print('Your current balance is $', amountDeposited)
   print('Thank you for banking with us')
 
-
-def accountBalance(user):
-  return user[-1]
-
+  print('\n')
+  print('Do you want to perform another operation')
+  OtherOption = int(input('1 for YES, 2 for NO \n'))
+  if OtherOption == 1:
+    bankOperation()
+  else:
+    login()
 
 def logout():
   login()
